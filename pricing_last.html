@@ -1,0 +1,266 @@
+<html>
+
+<head>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+   </script>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+      integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
+   </script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
+   </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+
+<body class="mt-4 mx-3">
+   <div class="form-check">
+      <input class="form-check-input" value="1" name="options" id="options1" type="radio" onClick="getChecked(this)" />
+      <label class="form-check-label">
+         One Payment (Save up to 20%)
+      </label>
+   </div>
+   <div class="form-check">
+      <input class="form-check-input" value="2" name="options" id="options2" checked='checked' type="radio"
+         onClick="getChecked(this)" />
+      <label class="form-check-label">
+         Monthly Payment
+      </label>
+   </div>
+   <table class="table">
+      <thead>
+         <tr>
+            <th scope="col">Addons</th>
+            <th scope="col">3 Months <br> Mover</th>
+            <th scope="col">6 Months <br> Thinker</th>
+            <th scope="col">9 Months <br> Grower</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
+            <td>TK</td>
+            <td><input type="hidden" value="1" name="month-3" id="month-3">1</td>
+            <td><input type="hidden" value="2" name="month-6" id="month-6">2</td>
+            <td> <input type="hidden" value="3" name="month-9" id="month-9">3</td>
+         </tr>
+         <tr>
+            <td> <input class="" type="hidden" value="4" name="pitch-hid" id="pitch-hid">All Inclusive Pitch-deck
+               Design $4</td>
+            <td> <input class="form-check-input mover" type="checkbox" value="" name="pitch-3" id="pitch-3"
+                  onclick="pi3_Clk(this,3)"> </td>
+            <td> <input class="form-check-input thinker" type="checkbox" value="" name="pitch-6" id="pitch-6"
+                  onclick="pi3_Clk(this,6)"> </td>
+            <td> <input class="form-check-input grower" type="checkbox" value="" name="pitch-9" id="pitch-9"
+                  onclick="pi3_Clk(this,9)"> </td>
+         </tr>
+         <tr>
+            <td> <input type="hidden" value="5" name="app-hid" id="app-hid">All Inclusive App Website $5</td>
+            <td> <input class="form-check-input mover" type="checkbox" value="" name="app-3" id="app-3"
+                  onclick="pi3_Clk(this,3)"> </td>
+            <td> <input class="form-check-input thinker" type="checkbox" value="" name="app-6" id="app-6"
+                  onclick="pi3_Clk(this,6)"> </td>
+            <td> <input class="form-check-input grower" type="checkbox" value="" name="app-9" id="app-9"
+                  onclick="pi3_Clk(this,9)"> </td>
+         </tr>
+         <tr>
+            <td> <input type="hidden" value="6" name="fin-hid" id="fin-hid">Financial Plan $6</td>
+            <td> <input class="form-check-input mover" type="checkbox" value="" name="fin-3" id="fin-3"
+                  onclick="pi3_Clk(this,3)"> </td>
+            <td> <input class="form-check-input thinker" type="checkbox" value="" name="fin-6" id="fin-6"
+                  onclick="pi3_Clk(this,6)"> </td>
+            <td> <input class="form-check-input grower" type="checkbox" value="" name="fin-9" id="fin-9"
+                  onclick="pi3_Clk(this,9)"> </td>
+         </tr>
+         <tr>
+            <td></td>
+            <td> <label class="" type="text" value="" name="mover-op" id="mover-op"></label> </td>
+            <td> <label class="" type="text" value="" name="thinker-op" id="thinker-op"></label> </td>
+            <td> <label class="" type="text" value="" name="grower-op" id="grower-op"></label> </td>
+         </tr>
+
+         <!--  <tr>
+            <td></td>
+            <td> <input class="" type="text" value="" name="mover-op" id="mover-op"> </td>
+            <td> <input class="" type="text" value="" name="thinker-op" id="thinker-op"> </td>
+            <td> <input class="" type="text" value="" name="grower-op" id="grower-op"> </td>
+         </tr> -->
+
+      </tbody>
+   </table>
+
+   <script>
+      function calculatePercentage(finalVal, typ, packageType) {
+         var chkedClassName = '',
+            className = '';
+         if (packageType == 3) {
+            className = '.mover';
+            chkedClassName = '.mover:checked';
+         }
+         if (packageType == 6) {
+            className = '.thinker';
+            chkedClassName = '.thinker:checked';
+         }
+         if (packageType == 9) {
+            className = '.grower';
+            chkedClassName = '.grower:checked';
+         }
+         if ($('#options1').is(':checked')) {
+            if ($(chkedClassName).length == $(className).length) {
+               finalVal = Number(finalVal) - (Number(finalVal) * 0.2);
+            } else {
+               finalVal = Number(finalVal) - (Number(finalVal) * 0);
+            }
+         }
+         if ($('#options2').is(':checked')) {
+            if ($(chkedClassName).length >= 1) {
+               // debugger
+               finalVal = Number(finalVal) - (Number(finalVal) * 0);
+            } else {
+               finalVal = Number(finalVal) - (Number(finalVal) * 0);
+            }
+         }
+         return finalVal;
+      }
+
+      function pi3_Clk(cb, packageType) {
+
+         if (packageType == 3) {
+            var monVal = $('#month-3').val();
+         } //end of packageType == 3
+
+         if (packageType == 6) {
+            var monVal = $('#month-6').val();
+         } //end of packageType == 6
+
+         if (packageType == 9) {
+            var monVal = $('#month-9').val();
+         } //end of packageType == 9
+
+
+         var pitchHidVal = $('#pitch-hid').val();
+         var appHidVal = $('#app-hid').val();
+         var finHidVal = $('#fin-hid').val();
+
+         if (!$('#pitch-' + packageType).is(":checked")) {
+            pitchHidVal = 0;
+         }
+         if (!$('#app-' + packageType).is(":checked")) {
+            appHidVal = 0;
+         }
+         if (!$('#fin-' + packageType).is(":checked")) {
+            finHidVal = 0;
+         }
+
+         var sumAllHid = Number(pitchHidVal) + Number(appHidVal) + Number(finHidVal);
+         if ($('#options1').is(':checked')) {
+            var finalMonVal = Number(monVal) * packageType;
+         }
+         if ($('#options2').is(':checked')) {
+            var finalMonVal = Number(monVal);
+
+            if (packageType == 3) {
+               var finalVal = Number(sumAllHid) / packageType;
+               finalVal = Number(finalVal) - (Number(finalVal) * .1);
+               var finalVal = Number(finalVal) + Number(finalMonVal);
+
+            } //end of packageType == 3
+
+            if (packageType == 6) {
+               // var finalVal = Number(sumAllHid) / packageType + Number(finalMonVal);
+               var finalVal = Number(sumAllHid) / packageType;
+               finalVal = Number(finalVal) - (Number(finalVal) * .1);
+               var finalVal = Number(finalVal) + Number(finalMonVal);
+            } //end of packageType == 6
+
+            if (packageType == 9) {
+               // var finalVal = Number(sumAllHid) / packageType + Number(finalMonVal);
+               var finalVal = Number(sumAllHid) / packageType;
+               finalVal = Number(finalVal) - (Number(finalVal) * .1);
+               var finalVal = Number(finalVal) + Number(finalMonVal);
+            }
+         }
+         // var finalVal = Number(sumAllHid) + Number(finalMonVal);
+
+         var result = calculatePercentage(finalVal, cb.type, packageType);
+         if (packageType == 3) {
+            // document.getElementById('mover-op').value = result;
+            $('#mover-op').text(result);
+         }
+         if (packageType == 6) { //6 for thinker-op
+            // document.getElementById('thinker-op').value = result;
+            $('#thinker-op').text(result);
+
+         }
+         if (packageType == 9) {
+            // document.getElementById('grower-op').value = result;
+            $('#grower-op').text(result);
+
+         }
+      }
+
+      function getChecked(rd) {
+         if (rd.id == 'options1') {
+            op1_for3(3);
+            op1_for6(6);
+            op1_for9(9);
+         }
+         if (rd.id == 'options2') {
+            op2_for3(3);
+            op2_for6(6);
+            op2_for9(9);
+         }
+
+         function op1_for3(packageTypeVal) {
+            radOp1Common(packageTypeVal);
+         }
+
+         function op1_for6(packageTypeVal) {
+            radOp1Common(packageTypeVal);
+         }
+
+         function op1_for9(packageTypeVal) {
+            radOp1Common(packageTypeVal);
+         }
+
+         function op2_for3(packageTypeVal) {
+            var monVal = $('#month-' + packageTypeVal).val();
+            document.getElementById('mover-op').value = Number(monVal) * packageTypeVal;
+            radOp2Common(packageTypeVal);
+         }
+
+         function op2_for6(packageTypeVal) {
+            var monVal = $('#month-' + packageTypeVal).val();
+            document.getElementById('thinker-op').value = Number(monVal) * packageTypeVal;
+            radOp2Common(packageTypeVal);
+         }
+
+         function op2_for9(packageTypeVal) {
+            var monVal = $('#month-' + packageTypeVal).val();
+            document.getElementById('grower-op').value = Number(monVal) * packageTypeVal;
+            radOp2Common(packageTypeVal);
+         }
+
+         function radOp1Common(packageTypeVal) {
+            document.getElementById('pitch-' + packageTypeVal).checked = true;
+            document.getElementById('app-' + packageTypeVal).checked = true;
+            document.getElementById('fin-' + packageTypeVal).checked = true;
+            pi3_Clk(rd, packageTypeVal);
+         }
+
+         function radOp2Common(packageTypeVal) {
+            document.getElementById('pitch-' + packageTypeVal).checked = true;
+            document.getElementById('app-' + packageTypeVal).checked = true;
+            document.getElementById('fin-' + packageTypeVal).checked = true;
+            pi3_Clk(rd, packageTypeVal);
+         }
+
+      }
+   </script>
+</body>
+
+</html>
