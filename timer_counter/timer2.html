@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>BEEP</title>
+<script type="text/javascript"> 
+var counter = 0;
+var audi;
+
+function display_c(){
+var refresh=1000; // Refresh rate in milli seconds
+mytime=setTimeout('display_ct()',refresh)
+}
+
+function display_ct() {
+audi = document.getElementById("myAudio"); 
+
+var x = new Date()
+var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getFullYear(); 
+x1 = x1 + " - " +  x.getHours( )+ ":" +  x.getMinutes() + ":" +  x.getSeconds();
+//document.getElementById('ct').innerHTML = x1;
+//document.getElementById('cto').innerHTML = x.getSeconds();
+
+var seconds = x.getSeconds();
+
+if(seconds%5==0){
+counter++;
+//console.log(seconds+" Hello "+counter);
+document.getElementById('cto1').innerHTML = "Seconds = "+seconds+" and counter = "+counter;
+if(counter <= 3){
+audi.play();
+}
+}
+if(counter > 3){
+audi.pause();
+}
+
+display_c();
+ }
+
+function playAudio() { 
+  audi.play();
+}
+function pauseAudio() { 
+  audi.pause(); 
+} 
+ 
+</script>
+</head>
+
+<body onload=display_ct();>
+<button onclick="playAudio()" type="button">Play Audio</button>
+<button onclick="pauseAudio()" type="button">Pause Audio</button> 
+
+<audio id="myAudio">
+  <source src="beep2.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+
+<span id='cto2' ></span>
+<br/>
+<span id='cto1' ></span>
+<br/>
+<span id='cto' ></span>
+<br/>
+<span id='ct' ></span>
+
+</body>
+</html>

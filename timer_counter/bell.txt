@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>BEEP</title>
+<
+script type = "text/javascript" >
+var counter = 0;
+var audi;
+var minutes;
+var seconds;
+var countDownDate;
+var distance;
+var paused = false;
+
+var nextYear = new Date().getFullYear() + 1;
+var nextYearFull = "Jan 1, " + nextYear + " 15:37:25";
+
+function display_c() {
+    var refresh = 1000; // Refresh rate in milli seconds
+    mytime = setTimeout('display_ct()', refresh)
+}
+
+function display_ct() {
+    var now = new Date().getTime();
+    distance = countDownDate - now;
+    seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("demo").innerHTML = "Sec = " + seconds;
+    //var seconds = x.getSeconds();
+    var intvl = document.getElementById("intervalInput").value;
+
+    if (seconds % intvl == 0) {
+        counter++;
+        document.getElementById('cto1').innerHTML = "<>Seconds = " + seconds + " and counter = " + counter;
+        if (paused == true) {
+            audi.pause();
+            console.log("if status = " + paused);
+        } else if (paused == false) {
+            audi.play();
+            console.log("else status = " + paused);
+        }
+    }
+    display_c();
+}
+
+function playAudio() {
+    countDownDate = new Date(nextYearFull).getTime();
+    audi = document.getElementById("myAudio");
+    audi.play();
+    display_ct();
+    console.log("playAudio pressed ");
+}
+
+function pauseAudio() {
+    paused = true;
+}
+
+function resumeAudio() {
+    audi = document.getElementById("myAudio");
+    paused = false;
+    console.log("resumeAudio pressed " + paused);
+}
+
+<
+/script>
+</head>
+
+<body>
+<audio id="myAudio">
+  <source src="beep2.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<input id = "intervalInput" type="text"/> <br/>
+<span id="demo"></span>
+<span id='cto1' ></span>
+<br/>
+
+<button onclick="playAudio()" type="button">Play Audio</button>
+<button onclick="pauseAudio()" type="button">Pause Audio</button> 
+<button onclick="resumeAudio()" type="button">Resume Audio</button> 
+
+</body>
+</html>

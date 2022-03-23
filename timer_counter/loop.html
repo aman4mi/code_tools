@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .go {
+            color: #2d38be;
+            font-size: 15px;
+            font-weight: bold;
+        }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+var val = "Hello World! Hello World! Hello World!Have a nice day! Have a nice day! Hello World! Hello World! Hello World!Have a nice day! Have a nice day! Hello World! Hello World! Hello World!"
+$(document).ready(function(){
+  $("button").click(function(){
+ for (let i = 0; i < 5000; i++) {
+    document.write('<body style="background-color: black;">'+'<h6 style="color:black; background-color: lightblue;" class= "go">' + val + '</h6>'+ '</body>')
+ }
+    
+  });
+});
+</script>
+</head>
+<body style="background-color: black;">
+
+<button>brust</button>
+
+<p id="p1">Hello!</p>
+
+</body>
+</html>

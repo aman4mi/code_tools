@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <audio id="myAudio">
+         <source src="beep2.mp3" type="audio/mpeg">
+         Your browser does not support the audio element.
+      </audio>
+      <style>
+         p {
+         text-align: center;
+         font-size: 60px;
+         margin-top: 0px;
+         }
+      </style>
+      <script>
+//var nextYear = new Date().getFullYear() + 1;
+//var nextYearFull = "Jan 1, " + nextYear + " 15:37:25";
+//countDownDate = new Date(nextYearFull).getTime()
+var audi;
+var countDownDate;
+var now;
+var inTime;
+var sysTime;
+const zeroPad = (num, places) => String(num).padStart(places, '0');
+function playAudio() {
+    inTime = document.getElementById("appt").value;
+    audi = document.getElementById("myAudio");
+	faster3min=0;
+}
+
+var x = setInterval(function() {
+
+console.log(new Date().toLocaleTimeString([], { hour: '2-digit', minute: "2-digit", second: "2-digit", hour12: false }));
+console.log(new Date().toLocaleTimeString([], { hour: '2-digit', minute: "2-digit", second: "2-digit" }));
+
+
+    now = new Date().getTime();
+	var hours = Math.floor((now % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	var minutes = Math.floor((now % (1000 * 60 * 60)) / (1000 * 60));
+	var seconds = Math.floor((now % (1000 * 60)) / 1000);
+	sysTime = zeroPad(hours, 2)+":"+zeroPad(minutes, 2)+":"+zeroPad(seconds, 2);
+	document.getElementById("demo").innerHTML =  "System Time = "+new Date().toLocaleTimeString();
+	//console.log(zeroPad(seconds, 2));
+	//console.log(" sys>>  "+new Date().toLocaleTimeString());
+	if (new Date().toLocaleTimeString() == inTime) {
+        console.log(" inside>>  "+inTime);
+		audi.play();
+    }
+	//console.log(inTime+" inTime<<<<>>>>> sysTime "+sysTime);
+    /*if (inTime == sysTime) {
+        console.log(" inside>>  "+inTime);
+		audi.play();
+    }*/
+}, 1000);
+
+      </script>
+   </head>
+   <body>
+      <span id="demo"></span><br/>
+	  <label>Start Time </label>
+	  <input step=1 type="time" id="appt" name="appt"> <br/>
+      <span id='cto1' ></span><br/>
+      <button onclick="playAudio()" type="button">Init Audio</button>
+      <!--<button onclick="pauseAudio()" type="button">Pause Audio</button> 
+      <button onclick="resumeAudio()" type="button">Resume Audio</button> -->
+   </body>
+</html>

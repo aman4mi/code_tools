@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>BEEP MilliSeconds</title>
+<script type="text/javascript"> 
+var counter = 0;
+
+function display_c2(){
+var refresh=100; // Refresh rate in milli seconds
+mytime=setTimeout('display_ct2()',refresh)
+}
+
+ function display_ct2() {
+var x = new Date()
+console.log(" Hello "+x.getMilliseconds());
+
+document.getElementById('cto2').innerHTML = "MilliSeconds = "+x.getMilliseconds();
+display_c2();
+ }
+</script>
+</head>
+
+<body onload=display_ct2();>
+<span id='cto2' ></span>
+<br/>
+
+</body>
+</html>

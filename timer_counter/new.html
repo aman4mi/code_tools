@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <audio id="myAudio">
+         <source src="beep2.mp3" type="audio/mpeg">
+         Your browser does not support the audio element.
+      </audio>
+      <style>
+         p {
+         text-align: center;
+         font-size: 60px;
+         margin-top: 0px;
+         }
+      </style>
+      <script>
+         var counter = 0;
+         var audi;
+         var minutes;
+         var seconds;
+         var countDownDate ;
+		 var distance = 0;
+         var paused = false;
+         
+         var nextYear = new Date().getFullYear() + 1;
+         var nextYearFull = "Jan 1, "+ nextYear +" 15:37:25";
+         
+         function playAudio() {
+           countDownDate = new Date(nextYearFull).getTime();
+           audi.play();
+         }
+         
+         var x = setInterval(function() {
+		   audi = document.getElementById("myAudio");
+		   
+           var now = new Date().getTime();
+           distance = countDownDate - now;   
+            seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("demo").innerHTML =  "Sec = "+seconds;
+            if(seconds % 3 == 0){
+         counter++;
+         document.getElementById('cto1').innerHTML = "Sec = "+seconds+" interval = "+(seconds % 3 == 0);
+         if(paused == true){
+         	audi.pause();
+         	console.log("if status = "+paused);
+         }else if(paused == false){
+         	audi.play();
+         	console.log("else status = "+paused);
+         }
+         }
+             
+           if (distance < 0) {
+             clearInterval(x);
+             document.getElementById("demo").innerHTML = "EXPIRED";
+           }
+         }, 1000);
+         
+         function pauseAudio() {
+         paused = true;	
+         } 
+         function resumeAudio() {
+         paused = false;	
+         }
+         
+      </script>
+   </head>
+   <body>
+      <span id="demo"></span>
+      <span id='cto1' ></span><br/>
+      <button onclick="playAudio()" type="button">Play Audio</button>
+      <button onclick="pauseAudio()" type="button">Pause Audio</button> 
+      <button onclick="resumeAudio()" type="button">Resume Audio</button> 
+   </body>
+</html>
