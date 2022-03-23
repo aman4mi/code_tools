@@ -73,9 +73,9 @@ function resumeAudio() {
 <span id='cto1' ></span>
 <br/>
 
-<button onclick="playAudio()" type="button">Play Audio</button>
-<button onclick="pauseAudio()" type="button">Pause Audio</button> 
-<button onclick="resumeAudio()" type="button">Resume Audio</button> 
+<button onclick="playAudio()" type="button">Play Audio Test</button>
+<button onclick="pauseAudio()" type="button">Pause Audio Test</button> 
+<button onclick="resumeAudio()" type="button">Resume Audio Test</button> 
 
 </body>
 </html>
