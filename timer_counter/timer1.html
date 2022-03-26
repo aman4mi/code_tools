@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+
+<h2>JavaScript Timing</h2>
+
+<p>Click "Try it". Wait 3 seconds, and the page will alert "Hello".</p>
+
+<!--<button onclick="setTimeout(myFunction, 3000);">Try it</button> -->
+<button onclick="setInterval(myFunction, 1000);">start</button>
+<button onclick="clearInterval(myFunction());">stop</button>
+<!--
+https://codepen.io/cathydutton/pen/GBcvo
+https://stackoverflow.com/questions/20318822/how-to-create-a-stopwatch-using-javascript
+timeanddate.com/stopwatch/
+https://www.tutorialrepublic.com/faq/how-to-call-a-function-repeatedly-after-fixed-time-interval-in-jquery.php
+https://www.plus2net.com/javascript_tutorial/clock.php
+
+
+-->
+
+
+<script>
+var counter=0;
+$( document ).ready(function() {
+
+
+/*var x = setInterval(function() {
+counter++;
+console.log("hello "+counter);
+}, 1000);*/
+});
+
+function myFunction() {
+  //alert('Hello');
+  counter++;
+  console.log("hello "+counter);
+}
+
+</script>
+
+</body>
+</html>
+
+<!--
+
+(function loop() {
+  setTimeout(function () {
+    // execute script
+	console.log("hello ");
+
+ loop()
+  }, 1000); //9000 = 9000ms = 9s
+}());
+
+
+
+
+-->

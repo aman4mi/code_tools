@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>BEEP</title>
+<script type="text/javascript"> 
+var counter = 0;
+function display_c(){
+var refresh=1000; // Refresh rate in milli seconds
+mytime=setTimeout('display_ct()',refresh)
+}
+
+function display_ct() {
+var x = new Date()
+var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getFullYear(); 
+x1 = x1 + " - " +  x.getHours( )+ ":" +  x.getMinutes() + ":" +  x.getSeconds();
+document.getElementById('ct').innerHTML = x1;
+document.getElementById('cto').innerHTML = x.getSeconds();
+
+var seconds = x.getSeconds();
+
+if(seconds%5==0){
+counter++;
+//console.log(seconds+" Hello "+counter);
+document.getElementById('cto1').innerHTML = "Seconds = "+seconds+" and counter = "+counter;
+
+}
+
+display_c();
+ }
+ 
+
+</script>
+</head>
+
+<body onload=display_ct();>
+<span id='cto2' ></span>
+<br/>
+<span id='cto1' ></span>
+<br/>
+<span id='cto' ></span>
+<br/>
+<span id='ct' ></span>
+
+</body>
+</html>

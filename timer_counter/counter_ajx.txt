@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style type="text/css">
+	
+span.smallVertical {  
+  display: inline-block;         
+  transform: rotate(-90deg) translateY(50%); 
+  margin-top: 3%;
+  width: 7%;  
+  line-height: 1rem;  
+  text-align:center;             
+  background:rgba(255,0,0,0.1);  
+}
+	
+
+</style>
+</head>
+
+<body>
+
+<button type ="button" onclick="getListFn()">Click me</button>
+<button type ="button" onclick="resetData()">Reset</button>
+
+<div>
+<h3 ><span class='smallVertical' id = "myspan" style="color:blue">__________</span></h3>
+</div>
+
+<script>
+
+
+$(document).ready(function(){
+//setInterval(function(){getListFn();}, 100);
+getListFn();
+});
+
+   function getListFn() {
+	    $.ajax({
+			type : "POST",
+			url : "ajx2.php",
+			success : function(response) {
+                document.getElementById("myspan").textContent = response;
+			}
+		}); 
+   }
+   
+    function resetData() {
+	    $.ajax({
+			type : "POST",
+			url : "reset.php",
+			success : function(response) {
+                document.getElementById("myspan").textContent = response;
+			}
+		}); 
+   }
+   
+</script>
+
+</body>
+</html>
+
+
+//http://localhost/phpcode_counter/index.php
+$count_my_page = ("hitcounter.txt");
+$hits = file($count_my_page);
+$hits[0] ++;
+$fp = fopen($count_my_page , "w");
+fputs($fp , "$hits[0]");
+
+echo $hits[0]. "<br>";
+
+echo date('Y-m-d H:i:s'). "<br>";
+$date = new DateTime();
+$date->setTimeZone(new DateTimeZone("Asia/Dhaka"));
+$get_datetime = $date->format('d.m.Y H:i:s');
+echo $get_datetime. "<br>";
+$get_onlytime = $date->format('H:i:s');
+echo $get_onlytime. "<br>";
+
+
+if($get_onlytime=="09:05:00"){
+	fputs($fp , 0);
+	echo "hi". "<br>";
+}
+fclose($fp);
