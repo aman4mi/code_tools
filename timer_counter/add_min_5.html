@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <audio id="myAudio">
+         <source src="beep2.mp3" type="audio/mpeg">
+         Your browser does not support the audio element.
+      </audio>
+      <style>
+         p {
+         text-align: center;
+         font-size: 60px;
+         margin-top: 0px;
+         }
+      </style>
+      <script>
+	  const chunks = [];
+				function AddMinutesToDate(date, minutes) {
+				return new Date(date.getTime() + minutes*60000);
+				}
+				function DateFormat(date){
+				
+				var hours = date.getHours();
+				var minutes = date.getMinutes();
+				minutes = minutes < 10 ? '0' + minutes : minutes;
+				//var strTime = days + '/' + month + '/' + year + '/ '+hours + ':' + minutes;
+				var strTime = hours + ':' + minutes;
+
+				return strTime;
+				}
+				var now = new Date();
+								console.log("original 000 "+new Date("21:50")) ;
+								console.log(new Date().toLocaleTimeString([], { hour: '2-digit', minute: "2-digit", second: "2-digit" }));
+
+
+				console.log("original "+DateFormat(now));
+				
+				for (let i = 1; i < 20; i++) {
+						var next = AddMinutesToDate(now,i*5);
+						var final_next = DateFormat(next);
+						console.log(final_next);	
+						chunks[i] = final_next;							
+				}
+				for (let i = 1; i < chunks.length; i++) {
+						console.log("ARR O/P "+chunks[i]);	
+				}
+				
+         
+      </script>
+   </head>
+   <body>
+     
+   </body>
+</html>

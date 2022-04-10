@@ -31,8 +31,8 @@ function playAudio() {
 
 var x = setInterval(function() {
 
-console.log(new Date().toLocaleTimeString([], { hour: '2-digit', minute: "2-digit", second: "2-digit", hour12: false }));
-console.log(new Date().toLocaleTimeString([], { hour: '2-digit', minute: "2-digit", second: "2-digit" }));
+//console.log(new Date().toLocaleTimeString([], { hour: '2-digit', minute: "2-digit", second: "2-digit", hour12: false }));
+//console.log(new Date().toLocaleTimeString([], { hour: '2-digit', minute: "2-digit", second: "2-digit" }));
 
 
     now = new Date().getTime();
@@ -48,10 +48,10 @@ console.log(new Date().toLocaleTimeString([], { hour: '2-digit', minute: "2-digi
 		audi.play();
     }
 	//console.log(inTime+" inTime<<<<>>>>> sysTime "+sysTime);
-    /*if (inTime == sysTime) {
+    if (inTime == sysTime) {
         console.log(" inside>>  "+inTime);
 		audi.play();
-    }*/
+    }
 }, 1000);
 
       </script>
